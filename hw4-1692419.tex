@@ -106,8 +106,15 @@ The method is synchronous for $P_i$ and $P_j$ ($j \neq i$) but all the $P_j$ par
 \section{Security considerations}
 
 The proposed multi-parties method final key, $K$, is not distinguishable in polynomial time from random numbers. This is true because the generation of the public keys in the first stage, $X_i$ $i \in \{1, ..., n\}$, follows the standard DH protocol and the generation fo $K$ follows an equivalent procedure of DH because it is an exponentiation of a product of secret values instead of a single secret value.
+So an attker that observe the network cannot retrieve any provate key.
 
-As standard DH, this method is vulnerable to man in the middle. If an attacker compromise a slave $P_j$ it can control only the communication between 
+On the other hand, as standard DH, this method is vulnerable to man in the middle.
+If an attacker compromise one of the parties he can compute the final key and so compromise the entire communication. 
+Does not matter if the attacker compromise the master or one of the slaves, at the end all parties have the key.
+
+This weakness is a trade off with the advantages of having a single final key for all parties.
+
+The presented method is a good method if we can ensure that man in the middle is not possible in the channel in wich we are using the protocol. 
 
 \vfill
 
